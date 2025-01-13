@@ -1,0 +1,351 @@
+/* General Settings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Qeon-JpWLM';
+    src: url('Qeon-JpWLM.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: Qeon-JpWLM, sans-serif;
+    background-color: #121212;
+    color: #f5f5f5;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Header */
+header {
+    background-color: #1c1c1c;
+    padding: 20px;
+    text-align: center;
+    color: #00ff00;
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards 0.5s;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    color: #00ff00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Hero Section */
+.hero h1 {
+    font-size: 3rem;
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards 1s;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards 1.5s;
+}
+
+/* Fade-In Effect */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Section Layout */
+section {
+    padding: 40px 20px;
+}
+
+/* Skills Section */
+#skills .skill-set {
+    display: flex;
+    justify-content: space-between;
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards 1s;
+}
+
+.skill {
+    width: 30%;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.progress-bar {
+    background-color: #00ff00;
+    height: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    width: 0;
+    animation: loadProgressBar 3s ease-out forwards;
+}
+
+.progress-bar2 {
+    background-color: rgba(255, 0, 255, 0.25);
+    height: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    width: 0;
+    animation: loadProgressBar 3s ease-out forwards;
+}
+
+@keyframes loadProgressBar {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* Project Cards */
+.project-card {
+    background-color: #1c1c1c;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards 1.5s;
+}
+
+.project-card:hover {
+    background-color: #333;
+    transform: translateY(-10px);
+}
+
+.project-card a {
+    color: #00ff00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Contact Section */
+.contact-info a {
+    display: flex;
+    color: #00ff00;
+    text-decoration: none;
+    margin: 10px 0;
+    animation: fadeIn 2s ease-out forwards 2s;
+}
+
+.contact-info {
+    display: flex
+;
+    align-content: center;
+    justify-content: space-around;
+}
+
+/* Profile Section */
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.profile img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+/* Additional CSS for Scroll Animations */
+.fade-in-visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeIn 2s ease-out forwards;
+}
+
+/* Targeting the About Me and Contact links specifically */
+#about-me {
+    color: #00ff00;
+    font-weight: bold;
+    position: relative;
+}
+
+#about-me:hover {
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.25), 0 0 10px rgba(255, 0, 255, 0.25), 0 0 20px rgba(255, 0, 255, 0.5), 0 0 40px rgba(255, 0, 255, 0.25);
+    opacity: 10%;
+}
+
+/* effects on section links*/
+
+/* Pulsing Neon Effect on Click */
+
+a:hover {
+    color: #00ff00;
+    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 40px #00ff00;
+    animation: pulse 1s infinite;
+
+    border-radius: 25px;
+}
+
+a:visited {
+    color: #00ff00; /* Ensure visited links stay the same color */
+}
+
+/* Keyframes for the pulsing effect */
+@keyframes pulse {
+    0% {
+        text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00, 0 0 20px #00ff00;
+    }
+    50% {
+        text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00;
+    }
+    100% {
+        text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00, 0 0 20px #00ff00;
+    }
+}
+
+.me {
+
+  color: white;
+  font-size: 20px;
+}
+
+.me2 {
+  color: white;
+  margin-bottom: -10px;
+}
+
+h2 {
+  font-size: 36px;
+}
+
+/* Mobile Responsive Design */
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 14px; /* Reduce base font size for smaller screens */
+    }
+
+    /* Header */
+    header {
+        padding: 10px;
+        font-size: 1.5rem;
+    }
+
+    header nav ul {
+        display: flex
+;
+        text-align: center;
+        padding-top: 10px;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-content: center;
+        flex-direction: row;
+    }
+
+    header nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    /* Hero Section */
+    .hero h1 {
+        font-size: 2.5rem; /* Smaller font size for heading */
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .hero p {
+        font-size: 1.2rem; /* Adjust paragraph size */
+        text-align: center;
+    }
+
+    /* Skills Section */
+    #skills .skill-set {
+        display: block; /* Stack skills vertically */
+        padding: 10px;
+    }
+
+    .skill {
+        width: 100%; /* Make each skill take up full width */
+        margin-bottom: 15px;
+    }
+
+    .progress-bar,
+    .progress-bar2 {
+        width: 100%; /* Make progress bars full width */
+    }
+
+    /* Project Cards */
+    .project-card {
+        margin: 10px 0;
+        padding: 15px;
+    }
+
+    .project-card a {
+        font-size: 1.2rem; /* Adjust link font size */
+    }
+
+    /* Profile Section */
+    .profile {
+        flex-direction: column; /* Stack profile image and text vertically */
+        align-items: center;
+    }
+
+    .profile img {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 15px;
+    }
+
+    /* About Me Section Link */
+    #about-me {
+        font-size: 1.2rem; /* Adjust font size for smaller screens */
+    }
+
+    /* Contact Section */
+    .contact-info a {
+        font-size: 1.2rem; /* Adjust font size for smaller screens */
+    }
+
+    .contact-info img {
+  margin-right: 10px;
+}
+
+    /* Links */
+    a:hover {
+        font-size: 1.2rem; /* Increase font size on hover */
+    }
+
+    /* Ensuring the layout is scrollable and well-aligned */
+    section {
+        padding: 20px;
+    }
+
+    /* Adjusting text sizes for small screens */
+    h2 {
+        font-size: 28px;
+    }
+
+    /* Mobile-friendly adjustments for any additional styling */
+    .me {
+        font-size: 16px;
+    }
+
+    .me2 {
+        font-size: 25px;
+    }
+}
