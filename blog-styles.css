@@ -1,0 +1,89 @@
+/* blog-styles.css */
+
+
+body {
+background: #111;
+    color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.blog-post {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #222;
+  border: 1px solid #444;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+.blog-post h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  color: #00ff00;
+}
+
+.blog-post h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  color: #ff00ff;
+}
+
+.blog-post p {
+  line-height: 1.6;
+  font-size: 1.2rem;
+  color: #bbb;
+}
+
+.blog-post .highlight {
+  background: linear-gradient(135deg, #00ffff, #ff00ff);
+  color: black;
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1rem;
+  color: #888;
+}
+
+footer a {
+  color: #ffcc00;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+.blog-posting {
+display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    justify-self: center;
+    width: 90vw;
+    margin-top: 20px;
+    
+}
+
+.blog-posting-title {
+text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.25rem;
+}
+
+.blog-posting-content {
+font-size: 1.25rem;
+margin-bottom: 20px;
+}
+
+.blog-posting-goback {
+text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
