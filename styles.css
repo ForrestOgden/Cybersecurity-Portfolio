@@ -245,6 +245,19 @@ font-family: 'Arial', sans-serif;
   margin-bottom: 20px;
 }
 
+.blog-list p {
+  font-size: 20px;
+}
+
+.read-more {
+  color: #00ff00;
+  font-size: 15px;
+}
+
+.blog-post {
+  margin-bottom: 15px;
+}
+
 
 
 
@@ -369,4 +382,7 @@ font-family: 'Arial', sans-serif;
     .me2 {
         font-size: 25px;
     }
+
+
+
 }
