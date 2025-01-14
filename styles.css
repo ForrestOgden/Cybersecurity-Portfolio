@@ -258,6 +258,10 @@ font-family: 'Arial', sans-serif;
   margin-bottom: 15px;
 }
 
+.blog-post h2 {
+  color: #4800e8;
+}
+
 
 
 
@@ -383,10 +387,8 @@ font-family: 'Arial', sans-serif;
         font-size: 25px;
     }
 
-.blog-post h2 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 2rem;
-  color: #4800e8;
-}
+
+
+
 
 }
