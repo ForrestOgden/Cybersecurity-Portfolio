@@ -75,15 +75,56 @@ display: flex;
 text-align: center;
     margin-bottom: 20px;
     font-size: 2.25rem;
+
 }
 
 .blog-posting-content {
 font-size: 1.25rem;
 margin-bottom: 20px;
+font-family: 'Arial', sans-serif;
 }
 
 .blog-posting-goback {
 text-align: center;
     font-size: 1.5rem;
-    margin-bottom: 20px;
+    margin-bottom: 35px;
+}
+
+.blog-post-2-img1 {
+  width: 75%;
+  height: 75%;
+}
+
+.blog-post-2-img2 {
+  width: 50%;
+}
+
+.blog-post-2-img3 {
+  width: 50%;
+}
+
+
+
+
+
+
+/* Mobile Responsive Design */
+@media screen and (max-width: 768px) {
+
+
+
+.blog-post-2-img1 {
+  width: 100%;
+}
+
+.blog-post-2-img2 {
+  width: 100%;
+}
+
+.blog-post-2-img3 {
+  width: 100%;
+}
+
+
+
 }
