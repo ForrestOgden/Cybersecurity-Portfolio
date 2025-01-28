@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="blog-styles.css">
+    <title>Blog Post 3</title>
+</head>
+<body>
+  <div class='blog-posting'>
+    <h1 class='blog-posting-title'>Directory Traversal Attacks!</h1>
+    <p class='blog-posting-content'>
+    In this post, I'm going to be covering the topics as seen above in the title. These lessons were completed in full on Let's Defend. The course name was "Detecting Web Attacks - 2" and featured examples, questions to answer, a live lab virtual machine, and detailed explanations. I'm going to summarize and share what I have learned through my own experience and words!
+<br><br>
+First up is <b>Directory Traversal</b>!
+<br><br>
+So what is Directory traversal? Well, if you're good at putting context clues together, it's exactly as it sounds - attackers navigating through directories on a server in order to gain access to things they shouldn't have access to.
+<br><br>
+This type of attack targets files that are most often found <i>outside</i> of the server's root directory. Typically, there will be some kind of input received from a user, and this input will be manipulated to allow the attacker to access files that are not intended to be accessed.<br>
+Some people may refer to this attack as the "dot-dot-slash" attack, which describes one of the things an analyst might look for if they suspect this type of attack. The <i>dot-dot-slash</i> is referring to "../" This little series of characters is used to travel through directories, navigating up and out of a folder to the parent folder. A single instance of "../" will move up 1 level in a file system's directory. <br><br>
+
+So, if you are in file structure that looks like this: /home/user/documents/, it means you are currently in the documents folder. If we use "../", we go up to user. If we had used "../../", we would then go up 2 levels to the home folder. So we can see that this simple entry can allow for navigation out of the current folder. 
+<br><br>
+<b>So where and how does an attacker use directory traversal?</b>
+<br>
+From what I have learned, this vulnerability is generally exploitable through a URL structure that is not using safe security practices. Let's make an example: 
+<br><br>
+<b>EXAMPLE</b>: http://example.com/view?file=documents/report.txt
+<br><br>
+In this example, a website or web application has allowed file access based on user-provided input, let's say it's a form where the user can input text to access a file. The website retrieves the file and display the information in the URL. <b>IF THE APPLICATION/WEBSITE DOES NOT PROPERLY VALIDATE INPUT FOMR THE USER, IT BECOMES VULNERABLE!</b> If the attacker notices that the <i>file</I> parameter is appended to a directory path in the URL, they could craft a payload to gain access.
+<br><br>
+The normal request of file=documents/report.txt could be manipulated by becoming: <br>
+file=../../etc/passwd
+<br><br>
+So if the attacker enters a payload like that in the url, and the application or site does not properly validate or sanitize data, they could gain access to the directory. And it doesn't really matter what file they land in, as long as they land in one. Because from there, they could begin to explore the directory structure. In this instance, they are trying to access a password, which could be highly damaging to a company!
+<br><br>
+<b>DETECTION:</b>
+<br>
+How do we detect these attacks? Well, as mentioned earlier, the <i>dot-dot-slash</i> is definitely something to look for. Since it will be used to traverse directories, it can show up on the logs as exactly that: ../ <br><br>
+However, attackers are smart. They may try to encode these characters so that they are not easily flagged. The encoding looks like this: <br>
+"." = "%2e" <br>
+"/" = "%2f" <br>
+"../" = "%2e%2e%2f" <br>
+Or perhaps they mix encoded and unencoded characters like this: "%2e%2e/" <br>
+Maybe they even use the encoded characters in the URL: "http://example.com/view?file=%2e%2e%2f%2e%2e%2fetc/passwd" <br><br>
+So it isn't only looking for "../", it can also be configuring your system to highlight these encoded characters as well. Regexes can be developed to automate your system to look for various inputs and flag them for viewing/suspicious entry.
+<br><br>
+<b>To summarize</b>, detecting these attacks involves looking for the patterns mentioned above. However, another approach is also looking for keywords that are often used in directory structures. Here are a few that I learned from the lesson on Let's defend: <br><br>
+
+Linux: <br>
+- /etc/issue <br>
+- /etc/passwd <br>
+- /etc/shadow <br>
+- /etc/group <br>
+- /etc/hosts <br><br>
+
+Windows: <br>
+- c:/boot.ini <br>
+- c:/inetpub/logs/logfiles <br>
+- c:/inetpub/wwwroot/global.asa <br>
+- c:/inetpub/wwwroot/index.asp <br>
+- c:/inetpub/wwwroot/web.config <br>
+- c:/sysprep.inf <br><br>
+
+paying attention to these keywords and common payloads can help make threats stand out - factor in decoding any characters that look suspicious, and you should notice when something isn't right.<br><br>
+
+EXAMPLE: <br><br>
+
+<img src='WA Investigation 1/dot-dot-slash.png' width="75%"></img>
+    </p><br>
+
+<img src='WA Investigation 1/more directory traversal.png' width="75%"></img>
+    </p><br><br>
+
+    <p class='blog-posting-goback'><a href="blog.html">Back to blog</a></p>
+</body>
+</html>
