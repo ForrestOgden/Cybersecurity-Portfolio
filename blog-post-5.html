@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name='description' content='Answers to the SOC138 Detected Suspicious Xls File by Forrest Ogden'
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="blog-styles.css">
     <title>Blog Post 5</title>
@@ -14,17 +13,17 @@
     <p class='blog-posting-content'>
 This challenge involves the use of Let's Defend's virtual SIEM setup which allows the user to explore built-in tools such as log management, endpoint security, Threat Intelligence, Email Security, and so on. In this post, I will be explaining my strategy to solve the SOC138 Challenge alert investigation. Below is an image showing exactly what this challenge looks like initially: <br><br>
 
- <img src='Alert1/alert1.png' alt='' width="50%"></img> <br><br>
+ <img src='Alert1/alert1.png' alt='' width="50%"> <br><br>
    
 Here, we can see a small rundown of the alert. When we go into the main investigation channel, however, we can view the alert in more detail as well as a few more important initial steps we can take before beginning the investigation. So, let's have a look at SOC138 in the main investigation channel: <br><br>
 
- <img src='Alert1/alert info.png' alt='' width="70%"></img> <br><br>
+ <img src='Alert1/alert info.png' alt='' width="70%"> <br><br>
 
 Each of these fields are important to take note of. For me, I like to either have this information written down, or have it accessible quickly in order to reference it while I am investigating using different tools. This is a good time to set up your information for easy referencing. <br><br>
 
 Now, to begin, before we can even start the investigation, we need to take ownership of the ticket. We do this by accepting it and creating a case. In the Let's Defend SIEM environment, we can do this by clicking the arrows in the upper right corner which look like this: >>. From there, we can create a case for the alert, thereby taking ownership of the ticket to begin our investigation. With our information ready and ownership of the alert established, we are now ready to start investigating. <br><br>
 
- <img src='Alert1/playbook.png' alt='' width="70%"></img> <br><br>
+ <img src='Alert1/playbook.png' alt='' width="70%"> <br><br>
 
 To begin the investigation, we will work through the playbook (see above). A playbook is essentially a guide to follow when assessing and investigating an alert. It's a good tool to utilize because our memory can often be faulty and perhaps we could forget to include a certain step. A playbook allows us to be consistent in our investigations across different alerts. Once you take ownership, you will be prompted by the playbook which will walk you through different tasks and questions.
 
@@ -32,26 +31,26 @@ To begin the investigation, we will work through the playbook (see above). A pla
 
 The first question is regarding the definition of the threat indicator. Here, I selected "other," because none of the definitions fit what the threat really was. The threat is a suspicious file that may contain malicious code or malware. Since no description fit that, I chose "other," here. In reality, were I to choose an option like this at a job, I would further provide an accurate description of the threat instead of simply selecting other. <br><br>
 
- <img src='Alert1/q1.png' alt='' width="70%"></img> <br><br>
+ <img src='Alert1/q1.png' alt='' width="70%"> <br><br>
 
 
 Now that we have that out of the way, we need to perform an action that wasn't really included in the playbook itself. We need to analyze this malware using a malware analysis tool. For this, I chose to use VirusTotal. VirusTotal is a service that allows you to scan files, domains, IPs and URLs for malware and other threats, and share them with the security community. There are many to choose from, but this suited my purposes fine. We can scan this file by grabbing the file hash from the event information in the second image. The hash value is "7ccf88c0bbe3b29bf19d877c4596a8d4". Now, we take that hash value over to VirusTotal, plug it into the analysis search, and we get the results. Below we can see that several security vendors have confirmed the maliciousness of the file along with a description of what the malware actually does when a user runs it: <br><br>
 
- <img src='Alert1/malicious file.png' alt='' width="70%"></img> <br><br>
- <img src='Alert1/malicious file 2.png' alt='' width="70%"></img> <br><br>
+ <img src='Alert1/malicious file.png' alt='' width="70%"> <br><br>
+ <img src='Alert1/malicious file 2.png' alt='' width="70%"> <br><br>
 
 So now we know that the file is in fact malicious and what exactly the malware does once it is ran.
 <br>
 
 On to question 2: <br><br>
 
- <img src='Alert1/q2.png' alt='' width="70%"></img> <br><br>
+ <img src='Alert1/q2.png' alt='' width="70%"> <br><br>
 
 So the question is has the malware been quarantined? Or has it been cleaned? My answer to this was "Not Quarantined," and I will explain why. <br><br>
 
 When assessing this part of the playbook, I looked at the targeted machine's (Sophia) network data. To see the information on her machine, go back up and look at the second image which contains the event information. Now, using her IP, I went to the Log Management tab and filtered results based on her IP address. Below is the image of the results of searching her logs: <br><br>
 
- <img src='Alert1/sus ip accessed.png' alt='' width="70%"></img> <br><br> 
+ <img src='Alert1/sus ip accessed.png' alt='' width="70%"> <br><br> 
 
 While this does not tell us if the file has been quarantined, it does show that there is traffic between her device and a DEST. Address with an IP of 177.53.143.89 along with the port number. This communication took place on the exact date that the alert was issued, so I am confident this is connected to the suspicious file. When you examine the raw log (magnifying glass on far right), it appears that there is data transmission involved, though non-readable.
 
@@ -59,7 +58,7 @@ While this does not tell us if the file has been quarantined, it does show that 
 
 I am not convinced the malware is gone, and in fact I am concerned it is still on the device since there appears to be communication. I go ahead and check the Endpoint Security for further analysis below: <br><br>
 
- <img src='Alert1/no trace.png' alt='' width="70%"></img> <br><br> 
+ <img src='Alert1/no trace.png' alt='' width="70%"> <br><br> 
 
 I reviewed the processes tab, the network action, the terminal history and browser history for Sophia's machine. There was nothing to be found neither on the date of the alert event nor the suspicious file. I also did not find anything determining the file was deleted or removed. There appeared to be no trace of the file left on the machine, but there was also no trace of the file being quarantined itself - no indications of persistency other than the communication from Sophia's machine. I could not find the removal of the file, but traffic was still occurring.  <br><br>
 
@@ -74,7 +73,7 @@ Because of this, I selected the option "Accessed". <br><br>
 The follow up after selecting this option is to then contain Sophia's machine. This was simple enough, simply access the endpoint security and find Sophia's machine. From there, toggle the selection to the right that says "containment," as seen in the picture here: <br><br>
 
 
- <img src='Alert1/containment.png' alt='' width="70%"></img> <br><br> 
+ <img src='Alert1/containment.png' alt='' width="70%"> <br><br> 
 
 The host machine is now contained for further analysis. <br><br>
 
@@ -83,7 +82,7 @@ Now we are nearing the end, adding artifacts. Here I always add any important in
 - the strange data values found in the raw log that were being sent from Sophia's machine <br><br>
 - any other bits if information that are important and relevant <br><br>
 
-<img src='Alert1/artifact.png' alt='' width="70%"></img> <br><br> 
+<img src='Alert1/artifact.png' alt='' width="70%"> <br><br> 
 
 Up next, the Analyst Note. In this portion, I like to summarize the entire process briefly, but also technically and with intention. Imagine communicating the issue and resolve to a supervisor who needs an efficient understanding of the alert without excess communication. Try to effectively communicate what happened, which actions you took, what your determinations were and why, and finally what the conclusion was - a false positive or true positive. <br><br>
 
@@ -93,7 +92,7 @@ Now finish by pressing confirm. You should be back at the main investigation cha
 
 So now let's look at our results! <br><br>
 
-<img src='Alert1/completed.png' alt='' width="70%"></img> <br><br> 
+<img src='Alert1/completed.png' alt='' width="70%"> <br><br> 
 
 All of the answers are correct, our analyst note looks good, and we have successfully completed the alert "SOC138 - Detected Suspicious Xls File"!<br><br>
 
