@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="blog-styles.css">
+    <title>Blog Post 8</title>
+</head>
+<body>
+  <div class='blog-posting'>
+    <h1 class='blog-posting-title'>Access Control List Implementation - Cisco Packet Tracer Lab</h1>
+    
+   <p class='blog-posting-content'>
+    
+<h2>Overview:</h2>
+<p class='blog-posting-content'>
+This project demonstrates the configuration and application of a basic standard Access Control List (ACL) in a Cisco network environment using Packet Tracer. The goal was to control device access to a router by permitting specific IP addresses and blocking unauthorized devices. </p>
+
+<br>
+
+<h2> Objectives: </h2>
+<p class='blog-posting-content'>
+- Allow PC0 (192.168.1.10) and PC1 (192.168.1.20) to access the router.
+<br>
+
+- Block PC2 from accessing the router. <br>
+
+- Demonstrate understanding of ACL creation, wildcard mask usage, and interface application.
+</p>
+<br><br>
+
+<h2 >Lab Topology: </h2>
+<p class='blog-posting-content'>
+- Router connected to a Switch. <br>
+
+- Three PCs (PC0, PC1, PC2) connected to the switch. <br>
+
+- All devices are configured within the 192.168.1.0/24 network. </p><br>
+
+<img class='blog-post-2-img1' src='ACL_config1.png' alt=''> <br><br>
+
+<h2> Configuration Steps:</h2>
+<p class='blog-posting-content'>
+
+<h3 class='blog-posting-content'>1. Access Privileged EXEC Mode:</h3>
+<p class='blog-posting-content'> Entered privileged mode using the "enable" command.
+</p> <br>
+
+<h3 class='blog-posting-content'>2. Enter Global Configuration Mode:</h3>
+<p class='blog-posting-content'> Accessed global configuration using configure terminal.</p> <br>
+
+<h3 class='blog-posting-content'>3. Create the Access Control List: </h3>
+<p class='blog-posting-content'> Defined ACL 10 to permit traffic only from the authorized IP addresses. </p> <br>
+
+<p class='blog-posting-content'> <b>Bash</b>: <br>
+"access-list 10 permit 192.168.1.10 0.0.0.0" <br>
+"access-list 10 permit 192.168.1.20 0.0.0.0" <br><br>
+Note: A wildcard mask of 0.0.0.0 was used to require an exact match of the source IP address. </p> <br>
+
+<img class='blog-post-2-img2' src='ACL_config5.png' alt=''> <br><br>
+
+<h3 class='blog-posting-content'>4. Apply the ACL to the Interface: </h3>
+
+<p class='blog-posting-content'>
+Applied ACL 10 to the LAN-facing router interface in the inbound direction. 
+ <br><br>
+<b>Bash</b>: <br>
+"interface GigabitEthernet0/0" <br>
+"ip access-group 10 in" <br>
+</p>
+
+<img class='blog-post-2-img2' src='ACL_config2.png' alt=''> <br><br>
+
+<h3 class='blog-posting-content'>5. Verify Configuration: </h3> 
+<p class='blog-posting-content'>
+Used show access-lists to confirm ACL rules were in place. <br><br>
+Tested connectivity by pinging the router from each PC: <br>
+
+PC0 and PC1 successfully pinged the router. <br>
+
+PC2 was correctly denied access. <br><br>
+</p>
+
+<img class='blog-post-2-img2' src='ACL_config3.png' alt=''> <br><br>
+<img class='blog-post-2-img2' src='ACL_config4.png' alt=''> <br><br>
+
+
+</p>
+
+
+<h2> Key Skills Demonstrated:</h2> <br>
+<p class='blog-posting-content'>
+* Creation and application of standard ACLs <br>
+
+* Understanding of wildcard masks (0 = match exactly) <br>
+
+* Traffic filtering based on source IP <br>
+
+* Basic router and interface configuration <br>
+
+* Network security principles: least privilege and access control
+</p>
+<br><br>
+
+<h2> Reflection:</h2>
+
+<p class='blog-posting-content'> This project reinforced key concepts of network access control, particularly how ACLs enforce network security by restricting access at the device level. It also highlighted the importance of precise wildcard masking and careful ACL planning to avoid unintended permissions. </p>
+
+
+
+
+
+    </p>
+
+    <p class='blog-posting-goback'><a href="blog.html">Back to blog</a></p>
+</body>
+</html>
