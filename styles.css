@@ -184,11 +184,6 @@ section {
     position: relative;
 }
 
-#about-me:hover {
-    text-shadow: 0 0 5px rgba(255, 0, 255, 0.25), 0 0 10px rgba(255, 0, 255, 0.25), 0 0 20px rgba(255, 0, 255, 0.5), 0 0 40px rgba(255, 0, 255, 0.25);
-    opacity: 10%;
-}
-
 /* effects on section links*/
 
 /* Pulsing Neon Effect on Click */
@@ -267,7 +262,13 @@ font-family: 'Arial', sans-serif;
   font-size: 15px;
 }
 
+.cert-card {
+ font-family: 'Arial', sans-serif;
+}
 
+.cert-info a {
+ color: #00ff00;
+}
 
 
 
