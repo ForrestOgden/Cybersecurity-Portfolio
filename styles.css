@@ -270,6 +270,22 @@ font-family: 'Arial', sans-serif;
  color: #00ff00;
 }
 
+.award {
+  width: 30px;
+  height: 40px;
+}
+
+.featured {
+    border: 2px solid goldenrod;
+    padding: 10px;
+}
+
+
+
+
+
+
+
 
 
 
