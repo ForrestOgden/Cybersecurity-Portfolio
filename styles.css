@@ -280,7 +280,14 @@ font-family: 'Arial', sans-serif;
     padding: 10px;
 }
 
+.medium-header::first-letter {
+    font-family: Arial, sans-serif; /* Fallback font for numbers */
+}
 
+.medium-header::after {
+    content: " (" attr(data-id) ")";
+    font-family: Arial, sans-serif;
+}
 
 
 

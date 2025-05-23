@@ -118,6 +118,10 @@ font-family: Arial, sans-serif;
 }
 
 
+.medium-header::first-letter {
+    font-family: Arial, sans-serif; /* Fallback font for numbers */
+}
+
 
 
 
