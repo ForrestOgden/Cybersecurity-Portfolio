@@ -54,7 +54,7 @@
       <b>Creating the VM that will be our Active Directory Server:</b><br>
       - First, download the OS: Windows Server 2022 (find it at Microsoft’s Evaluation Center - see image below). Give it a quick Google and you'll find it! I used the 64-bit edition. <br><br>
 
-     <img src="AD server setup\Microsoft Evaluation ISO download.png" style="width: 70%;">
+     <img src="Microsoft Evaluation ISO download.png" style="width: 70%;">
       <br>
     </p>
     <p class='medium-p'>
@@ -70,24 +70,24 @@
       - <b>Network Adapter</b>: Host-Only. This means only local connection - not connected the internet.<br>
       - Select "<b>Finish</b>" Your VM should powerup after it writes the disk, and later in your VMware window, you will have a new VM listed: <br><br>
 
-     <img src="AD server setup\VMware, create VM, VM setup.png" style="width: 70%;"> <br><br>
+     <img src="VMware, create VM, VM setup.png" style="width: 70%;"> <br><br>
 
 <b>Installing the OS after VM boots up</b><br>
         Your VM is going to try to boot up, but needs any key pushed to initiate the OS installation. Just make sure you are in the VM window and press any key. You should see a Windows logo pop up to start the OS installation process.<br><br>
 
       - Choose the edition: Standard with Desktop Experience. This will give us a user interface rather than relying solely on the command line.<br>
 
-     <img src="AD server setup\desktop_experience gui.png" style="width: 70%;"> <br><br> 
+     <img src="desktop_experience gui.png" style="width: 70%;"> <br><br> 
 
       - Set up a local admin account and password.
      <br>
 
-     <img src="AD server setup\adminSetup.png" style="width: 70%;"> <br><br>
+     <img src="adminSetup.png" style="width: 70%;"> <br><br>
 
 
 At this point you should have the OS installed, and after booting up, the Server Manager should start. It will look like the image below. We won't do anything here yet, but we will come back later and add roles for the server. For now, we need to move on to naming our computer and assigning and IP and DNS. <br> 
 
-     <img src="AD server setup\alright, we're in.png" style="width: 70%;"> <br> <br>
+     <img src="alright, we're in.png" style="width: 70%;"> <br> <br>
 
 
      </p>
@@ -103,12 +103,12 @@ At this point you should have the OS installed, and after booting up, the Server
       <code>sconfig</code><br>
       - This will bring up a menu where you can do a variety of things. We're going to set the IP later (although you can do it from this menu if you want - just look at the steps in the related section). For now just enter "2" and rename your computer to "DC01" because we will be promoting it to a Domain Controller later: <br> <br>
 
-     <img src="AD server setup\sconfig.png" style="width: 70%;"> <br>
+     <img src="sconfig.png" style="width: 70%;"> <br>
       - Reboot the server to apply changes. <br><br>
 
       Now after rebooting, on to statically assigning the IP to our machine: <br><br>
 
-     <img src="AD server setup\network_adapter_properties_ipv4.png" style="width: 70%;"> <br>
+     <img src="network_adapter_properties_ipv4.png" style="width: 70%;"> <br>
       
       Use the image above for reference. Navigate to Network Connections on your VM and right click the Ethernet connection. Select <b>Properties</b>, and then highlight "Internet Protocol Version 4".<br><br>
 
@@ -125,7 +125,7 @@ Once it is booted back up, run command prompt (cmd) and run the command <i>ipcon
 This will show us if our settings were applied. You should confirm that the IPv4 address and DNS address we assigned matches what is displayed in the prompt window: <br>
 
 
-     <img src="AD server setup\ip_dns_confirmed.png" style="width: 70%;"> <br><br>
+     <img src="ip_dns_confirmed.png" style="width: 70%;"> <br><br>
 
 
      If it matches, you should be ready for the next step! Installing the Active Directory Domain Service and DNS roles on your server and creating the domain your workstation VMs will be joined to!
@@ -141,7 +141,7 @@ This will show us if our settings were applied. You should confirm that the IPv4
     <p class='medium-p'>
       - Open Server Manager if not already open > Manage > Add Roles and Features:<br>
 
-     <img src="AD server setup\add AD DS role.png" style="width: 70%;"> <br><br>
+     <img src="add AD DS role.png" style="width: 70%;"> <br><br>
 
 	-In the Add Roles and Features Wizard, you will be prompted to 	select the installation type. <br>
 
@@ -169,7 +169,7 @@ This will show us if our settings were applied. You should confirm that the IPv4
 
 	-DNS Server<br><br>
 
-     <img src="AD server setup\add AD and DNS roles.png" style="width: 70%;"> <br><br>
+     <img src="add AD and DNS roles.png" style="width: 70%;"> <br><br>
 
 	You will receive a pop-up asking to add necessary features for 	each role. Click Add Features for both. <br><br>
 
@@ -189,7 +189,7 @@ This will show us if our settings were applied. You should confirm that the IPv4
 
 	Click Install to begin the installation.<br><br>
 
-     <img src="AD server setup\confirm everything and install .png" style="width: 70%;"> <br><br>
+     <img src="confirm everything and install .png" style="width: 70%;"> <br><br>
 
         <b>Installing and Completion of Installation:</b><br>
 
@@ -200,7 +200,7 @@ This will show us if our settings were applied. You should confirm that the IPv4
       - Click the notification and select promote the server to a domain controller: <br>
 
     
-	 <img src="AD server setup\promote to domain controller.png" style="width: 70%;"> <br><br>
+	 <img src="promote to domain controller.png" style="width: 70%;"> <br><br>
 
 	The <b>Active Directory Domain Services Configuration 	Wizard</b> will open. <br>
 
@@ -210,7 +210,7 @@ This will show us if our settings were applied. You should confirm that the IPv4
 
 	Click Next.<br><br>
 
-	 <img src="AD server setup\Office.local forest.png" style="width: 70%;"> <br><br>
+	 <img src="Office.local forest.png" style="width: 70%;"> <br><br>
 
 <b>Domain Controller Options</b>:
 On the Domain Controller Options screen, you will configure specific settings for the domain controller. <br><br>
@@ -231,7 +231,7 @@ This is the <b>Directory Services Restore Mode</b> password, used for recovery.
 
 Enter a strong password and confirm it. <br><br>
 
-	 <img src="AD server setup\DSRM password set.png" style="width: 70%;"> <br><br>
+	 <img src="DSRM password set.png" style="width: 70%;"> <br><br>
 
 Click Next. <br><br>
 
@@ -269,7 +269,7 @@ After the reboot, the login screen will now display the domain name:<br><br>
 
 "OFFICE\Administrator"<br><br>
 
-	 <img src="AD server setup\new office-admin account.png" style="width: 70%;"> <br><br>
+	 <img src="new office-admin account.png" style="width: 70%;"> <br><br>
 
 This will be your username to log in, the full title. Enter the password you created for the domain admin account.<br><br>
 
@@ -278,7 +278,7 @@ This will be your username to log in, the full title. Enter the password you cre
 After logging in, open Server Manager and verify that the AD DS and DNS roles are present and functioning. <br><br>
 
       You can also check to make sure you have the hilighted DNS records (you should have them after installation and reboot completed) by going into the DNS tab (DNS Manager) > Forward lookup zones > Office.local <br><br>
-	 <img src="AD server setup\Verify AD DS - DNS- and DNS records.png" style="width: 70%;"> <br><br>
+	 <img src="Verify AD DS - DNS- and DNS records.png" style="width: 70%;"> <br><br>
 
 
 Open <b>Active Directory Users and Computers </b> (ADUC) in the <b>Tools</b> tab to confirm that the Office.local domain structure is visible. You just want to make sure you can see Office.local exists.<br><br>
@@ -303,7 +303,7 @@ These are just extra checks that ensure your installation went as expected. <br>
 
       It should resolve to the IP address you set for your server. As you can see, the command resolved to the one I set, 192.168.1.10:<br>
 
-	 <img src="AD server setup\confirm office.local dns resolution.png" style="width: 70%;"> <br><br>
+	 <img src="confirm office.local dns resolution.png" style="width: 70%;"> <br><br>
 
 It is because of the existence of those DNS records mentioned previously that this command was able to resolve correctly!<br><br>
 
@@ -356,7 +356,7 @@ Remember when we assigned the IP and DNS to the Active Directory server? The pro
     6. With your Active Directory VM on and running a the same time as your User1/Workstation1 VM, try to run the ping command to verify you can reach the server. If you get a response, you've set the DNS correctly: <br><br>
 
 
-	 <img src="AD server setup\workstation1 pings DNS success.png" style="width: 70%;"> <br><br>
+	 <img src="workstation1 pings DNS success.png" style="width: 70%;"> <br><br>
 
 If you want to try to ping the VM from the Domain Controller, you might need to disable Micrsoft's firewall, Windows Defender. My server could not ping my workstation VM unless I turned it off because it was automataically set to deny ICMP traffic (ping).
 
@@ -384,7 +384,7 @@ To join a user to the domain, go to: <br><br>
 
 You'll have to enter the Admin credentials you created earlier: <br><br>
 
-	 <img src="AD server setup\join VM to domain - admin credentials.png" style="width: 70%;"> <br><br>
+	 <img src="join VM to domain - admin credentials.png" style="width: 70%;"> <br><br>
 
 Go to the "Computer Name" tab. <br>
 Click "Change". <br>
@@ -392,11 +392,11 @@ You will now give your VM a name to be used in the Domain Controller for your re
 
 Once you give it a name, select "Domain:" under the "Member of" section at the bottom. Here you will enter the domain you created earlier. My example was "Office.local". <br><br>
 
-	 <img src="AD server setup\domain join success.png" style="width: 70%;"> <br><br>
+	 <img src="domain join success.png" style="width: 70%;"> <br><br>
 
 After joining the VM to the domain, you will have to reboot the VM. In your Domain Controller VM, refresh the server using the double arrow icon at the top. Then, go to the top right and select Tools > Active Directory Users and Computers. Check the computers container by clicking it. Your joined PC should now be listed there: <br><br>
 
-	 <img src="AD server setup\user1 computer is in domain - verified.png" style="width: 70%;"> <br><br>
+	 <img src="user1 computer is in domain - verified.png" style="width: 70%;"> <br><br>
 
 <b>Now, create an Organizational Unit (OU) for the workstation users</b>:<br>
 
@@ -408,7 +408,7 @@ Navigate to your OU, right click in the empty space and choose New > User. <br>
 
 Give the user a name, a password, and select "change password at next log on", so that when we log in as this user to our VM, we can set our own password. <br><br>
 
-	 <img src="AD server setup\adding a new user.png" style="width: 70%;"> <br><br>
+	 <img src="adding a new user.png" style="width: 70%;"> <br><br>
 
 <b>Now go back to your workstation 1 VM.</b> <br>
 
@@ -426,7 +426,7 @@ It should resolve to the IP of your domain controller. <br><br>
 
 You can also confirm your files have been created by going to the Users file and seeing if your created user (for me it was jdoe) has its files created: <br><br>
 
-	 <img src="AD server setup\jdoe user file available - success.png" style="width: 70%;"> <br><br>
+	 <img src="jdoe user file available - success.png" style="width: 70%;"> <br><br>
 
 So there you go. You've joined the user to the domain! Just repeat the same process for your next 3 users, Workstation 2, HelpDesk 1, and HelpDesk 2. You'll give them new usernames and passwords, log in with the new credentials, set up their new passwords, and verify connectivity using ping to resolve the IP of Office.local! <br>
 
@@ -439,7 +439,7 @@ So there you go. You've joined the user to the domain! Just repeat the same proc
     <p class='medium-p'>
 We know the VM can ping the AD server, but since all VMs were on the host-only network, they should be able to communicate with each other as well. After getting all users established, you can check if they can reach each other by pinging each other's IP address. For instance, I pinged workstation 2 from workstation 1 and got a successful response. The same was true for pinging workstation 1 from workstation 2. This tells me that they have connectivity:<br><br>
 
-	 <img src="AD server setup\User 1 and User 2 ping each other and DNS successfully.png" style="width: 80%;"> <br><br>
+	 <img src="User 1 and User 2 ping each other and DNS successfully.png" style="width: 80%;"> <br><br>
     </p> <br>
 
 <h2>Congratulations! You've configured an Active Directory server, created Organizational Units, added users, joined PCs (VMs) to the domain, and verified connectivity! </h2> <br>
